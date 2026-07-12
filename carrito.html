@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrito — Notiva</title>
+<meta name="description" content="Revisa y finaliza la compra de tus paquetes de créditos Notiva.">
+
+<!-- ============================================================
+     GOOGLE TAG MANAGER — instala aquí el snippet de <head> (Fase 1)
+     Pégalo justo debajo de esta línea.
+     ============================================================ -->
+<!-- Fin snippet GTM cabecera -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============================================================
+     GOOGLE TAG MANAGER (noscript) — pégalo justo después de <body>
+     ============================================================ -->
+<!-- Fin GTM (noscript) -->
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">N</span>Notiva</a>
+    <ul class="nav-links">
+      <li><a href="index.html" >Inicio</a></li>
+      <li><a href="servicios.html" >Servicios</a></li>
+      <li><a href="precios.html" class="active">Precios</a></li>
+      <li><a href="contacto.html" >Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <div data-account-area style="display:flex;gap:10px;"></div>
+      <a href="carrito.html" class="icon-btn" aria-label="Carrito">
+        🛒
+        <span class="badge-count" data-cart-badge style="display:none;">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:10px;">
+  <div class="container" style="max-width:760px;">
+    <span class="eyebrow">Carrito</span>
+    <h1>Tu pedido de créditos</h1>
+    <p class="lead">Revisa los paquetes seleccionados antes de finalizar la compra. Para completar el pedido necesitarás tener una cuenta Notiva.</p>
+  </div>
+</header>
+
+<section class="section--tight">
+  <div class="container split" style="align-items:start;">
+    <div class="card" id="cart-items-card">
+      <div id="cart-items"></div>
+      <div id="cart-empty" class="empty-state" style="display:none;">
+        <div class="icon">🛒</div>
+        <h3>Tu carrito está vacío</h3>
+        <p>Añade paquetes de créditos desde la página de precios.</p>
+        <a href="precios.html" class="btn btn-primary">Ver precios</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Resumen del pedido</h3>
+      <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">0€</span></div>
+      <div class="summary-row"><span>IVA (21%)</span><span id="sum-iva">0€</span></div>
+      <div class="summary-row total"><span>Total</span><span id="sum-total">0€</span></div>
+      <button class="btn btn-primary btn-block" style="margin-top:20px;" id="checkout-btn" onclick="startCheckout()">Finalizar compra</button>
+      <p class="helper" style="margin-top:14px;">Al finalizar la compra se te pedirá iniciar sesión o crear una cuenta, como exige la normativa para servicios de confianza digital.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-disclaimer">⚠️ Notiva es un sitio ficticio creado únicamente con fines educativos para practicar la instalación de Google Tag Manager y GA4. No es una empresa real ni presta servicios reales.</div>
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo"><span class="logo-mark">N</span>Notiva</a>
+        <p style="margin-top:14px;max-width:280px;">Comunicaciones digitales certificadas para empresas: email, SMS, firma electrónica y verificación de identidad.</p>
+      </div>
+      <div><h4>Servicios</h4><ul>
+        <li><a href="servicios.html#email">Email certificado</a></li>
+        <li><a href="servicios.html#sms">SMS certificado</a></li>
+        <li><a href="servicios.html#firma">Firma electrónica</a></li>
+        <li><a href="servicios.html#ekyc">Verificación eKYC</a></li>
+      </ul></div>
+      <div><h4>Empresa</h4><ul>
+        <li><a href="precios.html">Precios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="assets/dossier-notiva.pdf" download>Descargar dossier (PDF)</a></li>
+      </ul></div>
+      <div><h4>Síguenos</h4><ul>
+        <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.twitter.com" target="_blank" rel="noopener">X / Twitter</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Notiva Digital — proyecto ficticio de práctica GTM/GA4</span>
+      <span>Aviso legal · Privacidad · Cookies (enlaces de ejemplo)</span>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/34600000000" class="wa-float" data-wa-click aria-label="Contactar por WhatsApp" target="_blank" rel="noopener">💬</a>
+
+<script src="js/app.js"></script>
+
+<script>
+function iconFor(id){
+  if(id.indexOf('EMAIL')===0) return {icon:'✉️', color:'purple'};
+  if(id.indexOf('SMS')===0) return {icon:'💬', color:'yellow'};
+  if(id.indexOf('FIRMA')===0) return {icon:'✍️', color:'green'};
+  return {icon:'🪪', color:'coral'};
+}
+
+function renderCart(){
+  var cart = getCart();
+  var wrap = document.getElementById('cart-items');
+  var empty = document.getElementById('cart-empty');
+  var checkoutBtn = document.getElementById('checkout-btn');
+  if(cart.length === 0){
+    wrap.style.display = 'none';
+    empty.style.display = 'block';
+    checkoutBtn.setAttribute('disabled','disabled');
+  } else {
+    wrap.style.display = 'block';
+    empty.style.display = 'none';
+    checkoutBtn.removeAttribute('disabled');
+    wrap.innerHTML = cart.map(function(item){
+      var meta = iconFor(item.item_id);
+      return '<div class="cart-item">'+
+        '<div class="thumb bg-'+meta.color+'">'+meta.icon+'</div>'+
+        '<div class="info"><b>'+item.item_name+'</b><span>'+item.item_category+'</span>'+
+          '<div><button class="remove-link" onclick="removeFromCart(\''+item.item_id+'\')">Quitar</button></div>'+
+        '</div>'+
+        '<div class="qty">'+
+          '<button onclick="changeQty(\''+item.item_id+'\',-1)">−</button>'+
+          '<span>'+item.quantity+'</span>'+
+          '<button onclick="changeQty(\''+item.item_id+'\',1)">+</button>'+
+        '</div>'+
+        '<div class="price">'+(item.price*item.quantity)+'€</div>'+
+      '</div>';
+    }).join('');
+  }
+  var subtotal = cartTotal();
+  var iva = Math.round(subtotal*0.21*100)/100;
+  document.getElementById('sum-subtotal').textContent = subtotal.toFixed(2)+'€';
+  document.getElementById('sum-iva').textContent = iva.toFixed(2)+'€';
+  document.getElementById('sum-total').textContent = (subtotal+iva).toFixed(2)+'€';
+}
+
+function startCheckout(){
+  var cart = getCart();
+  if(cart.length === 0) return;
+  pushDL({ ecommerce:null });
+  pushDL({ event:'begin_checkout', ecommerce:{ currency:'EUR', value: cartTotal(), items: cart } });
+
+  if(!isLoggedIn()){
+    sessionStorage.setItem('notiva_next', 'carrito.html');
+    window.location.href = 'registro.html';
+  } else {
+    window.location.href = 'gracias.html';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  renderCart();
+  if(getCart().length){
+    pushDL({ ecommerce:null });
+    pushDL({ event:'view_cart', ecommerce:{ currency:'EUR', value: cartTotal(), items: getCart() } });
+  }
+});
+</script>
+
+</body>
+</html>

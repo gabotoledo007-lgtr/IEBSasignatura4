@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precios — Notiva</title>
+<meta name="description" content="Paquetes de créditos para email certificado, SMS certificado, firma electrónica y eKYC.">
+
+<!-- ============================================================
+     GOOGLE TAG MANAGER — instala aquí el snippet de <head> (Fase 1)
+     Pégalo justo debajo de esta línea.
+     ============================================================ -->
+<!-- Fin snippet GTM cabecera -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============================================================
+     GOOGLE TAG MANAGER (noscript) — pégalo justo después de <body>
+     ============================================================ -->
+<!-- Fin GTM (noscript) -->
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">N</span>Notiva</a>
+    <ul class="nav-links">
+      <li><a href="index.html" >Inicio</a></li>
+      <li><a href="servicios.html" >Servicios</a></li>
+      <li><a href="precios.html" class="active">Precios</a></li>
+      <li><a href="contacto.html" >Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <div data-account-area style="display:flex;gap:10px;"></div>
+      <a href="carrito.html" class="icon-btn" aria-label="Carrito">
+        🛒
+        <span class="badge-count" data-cart-badge style="display:none;">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:10px;">
+  <div class="container" style="max-width:760px;">
+    <span class="eyebrow">Precios</span>
+    <h1>Paquetes de créditos por servicio</h1>
+    <p class="lead">Compra los créditos que necesites para cada servicio. Podrás combinar varios paquetes en el mismo pedido.</p>
+  </div>
+</header>
+
+<section class="section--tight">
+  <div class="container">
+    <div class="service-tabs">
+      <button class="tab-btn active" data-tab="email" onclick="switchTab('email')">✉️ Email Certificado</button>
+<button class="tab-btn" data-tab="sms" onclick="switchTab('sms')">💬 SMS Certificado</button>
+<button class="tab-btn" data-tab="firma" onclick="switchTab('firma')">✍️ Firma Electrónica</button>
+<button class="tab-btn" data-tab="ekyc" onclick="switchTab('ekyc')">🪪 Verificación eKYC</button>
+
+    </div>
+    <div class="pricing-panel active" id="panel-email"><div class="grid grid-3">
+      <div class="card price-card">
+        <span class="pill pill-purple">✉️ Email Certificado</span>
+        <h3 style="margin-top:12px;">Starter</h3>
+        <div class="credits">100 créditos</div>
+        <div class="amount">49€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>100 envíos certificados</li><li>Certificado PDF por envío</li><li>Soporte por email</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('EMAIL-100')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('EMAIL-100'); ">Comprar créditos</button>
+      </div>
+      <div class="card price-card featured">
+        <span class="pill pill-purple">✉️ Email Certificado</span>
+        <h3 style="margin-top:12px;">Business</h3>
+        <div class="credits">500 créditos</div>
+        <div class="amount">199€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>500 envíos certificados</li><li>Plantillas reutilizables</li><li>Panel de seguimiento avanzado</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('EMAIL-500')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('EMAIL-500'); ">Comprar créditos</button>
+      </div>
+      <div class="card price-card">
+        <span class="pill pill-purple">✉️ Email Certificado</span>
+        <h3 style="margin-top:12px;">Enterprise</h3>
+        <div class="credits">2.000 créditos</div>
+        <div class="amount">699€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>2.000 envíos certificados</li><li>API dedicada</li><li>Gestor de cuenta asignado</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('EMAIL-2000')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('EMAIL-2000'); ">Comprar créditos</button>
+      </div></div></div>
+<div class="pricing-panel" id="panel-sms"><div class="grid grid-3">
+      <div class="card price-card">
+        <span class="pill pill-yellow">💬 SMS Certificado</span>
+        <h3 style="margin-top:12px;">Starter</h3>
+        <div class="credits">200 créditos</div>
+        <div class="amount">39€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>200 SMS certificados</li><li>Confirmación de entrega</li><li>Soporte por email</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('SMS-200')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('SMS-200'); ">Comprar créditos</button>
+      </div>
+      <div class="card price-card featured">
+        <span class="pill pill-yellow">💬 SMS Certificado</span>
+        <h3 style="margin-top:12px;">Business</h3>
+        <div class="credits">1.000 créditos</div>
+        <div class="amount">169€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>1.000 SMS certificados</li><li>Plantillas por tipo de aviso</li><li>Informes mensuales</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('SMS-1000')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('SMS-1000'); ">Comprar créditos</button>
+      </div>
+      <div class="card price-card">
+        <span class="pill pill-yellow">💬 SMS Certificado</span>
+        <h3 style="margin-top:12px;">Enterprise</h3>
+        <div class="credits">5.000 créditos</div>
+        <div class="amount">699€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>5.000 SMS certificados</li><li>API dedicada</li><li>Gestor de cuenta asignado</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('SMS-5000')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('SMS-5000'); ">Comprar créditos</button>
+      </div></div></div>
+<div class="pricing-panel" id="panel-firma"><div class="grid grid-3">
+      <div class="card price-card">
+        <span class="pill pill-green">✍️ Firma Electrónica</span>
+        <h3 style="margin-top:12px;">Starter</h3>
+        <div class="credits">50 firmas</div>
+        <div class="amount">59€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>50 documentos firmados</li><li>Firma simple y avanzada</li><li>Soporte por email</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('FIRMA-50')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('FIRMA-50'); ">Comprar créditos</button>
+      </div>
+      <div class="card price-card featured">
+        <span class="pill pill-green">✍️ Firma Electrónica</span>
+        <h3 style="margin-top:12px;">Business</h3>
+        <div class="credits">250 firmas</div>
+        <div class="amount">249€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>250 documentos firmados</li><li>Flujos multi-firmante</li><li>Plantillas de documentos</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('FIRMA-250')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('FIRMA-250'); ">Comprar créditos</button>
+      </div>
+      <div class="card price-card">
+        <span class="pill pill-green">✍️ Firma Electrónica</span>
+        <h3 style="margin-top:12px;">Enterprise</h3>
+        <div class="credits">1.000 firmas</div>
+        <div class="amount">799€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>1.000 documentos firmados</li><li>Firma cualificada</li><li>Gestor de cuenta asignado</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('FIRMA-1000')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('FIRMA-1000'); ">Comprar créditos</button>
+      </div></div></div>
+<div class="pricing-panel" id="panel-ekyc"><div class="grid grid-3">
+      <div class="card price-card">
+        <span class="pill pill-coral">🪪 Verificación eKYC</span>
+        <h3 style="margin-top:12px;">Starter</h3>
+        <div class="credits">50 verificaciones</div>
+        <div class="amount">79€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>50 verificaciones de identidad</li><li>Biometría facial</li><li>Soporte por email</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('EKYC-50')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('EKYC-50'); ">Comprar créditos</button>
+      </div>
+      <div class="card price-card featured">
+        <span class="pill pill-coral">🪪 Verificación eKYC</span>
+        <h3 style="margin-top:12px;">Business</h3>
+        <div class="credits">250 verificaciones</div>
+        <div class="amount">329€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>250 verificaciones de identidad</li><li>Informe de confianza</li><li>Integración por API</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('EKYC-250')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('EKYC-250'); ">Comprar créditos</button>
+      </div>
+      <div class="card price-card">
+        <span class="pill pill-coral">🪪 Verificación eKYC</span>
+        <h3 style="margin-top:12px;">Enterprise</h3>
+        <div class="credits">1.000 verificaciones</div>
+        <div class="amount">999€ <span>/ paquete</span></div>
+        <div class="per-credit">Paquete de créditos, sin caducidad este ejercicio</div>
+        <ul><li>1.000 verificaciones de identidad</li><li>Enlace compartible</li><li>Gestor de cuenta asignado</li></ul>
+        <button class="btn btn-outline btn-block" style="margin-bottom:10px;"
+          onclick="openPackageModal('EKYC-1000')">Ver ficha del paquete</button>
+        <button class="btn btn-primary btn-block" onclick="addToCart('EKYC-1000'); ">Comprar créditos</button>
+      </div></div></div>
+
+  </div>
+</section>
+
+<section class="section--tight" style="background:#fff;border-top:1px solid var(--line);">
+  <div class="container" style="max-width:760px;text-align:center;">
+    <h2>¿Necesitas un volumen mayor?</h2>
+    <p>Para consumos superiores a 5.000 créditos al mes, nuestro equipo puede preparar una propuesta a medida.</p>
+    <a href="contacto.html" class="btn btn-dark">Hablar con ventas</a>
+  </div>
+</section>
+
+<div class="modal-overlay" id="pkg-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(27,20,54,.55);z-index:90;align-items:center;justify-content:center;padding:20px;">
+  <div class="card" id="pkg-modal-card" style="max-width:440px;width:100%;position:relative;">
+    <button onclick="closePackageModal()" aria-label="Cerrar" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.3rem;cursor:pointer;">✕</button>
+    <div id="pkg-modal-body"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-disclaimer">⚠️ Notiva es un sitio ficticio creado únicamente con fines educativos para practicar la instalación de Google Tag Manager y GA4. No es una empresa real ni presta servicios reales.</div>
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo"><span class="logo-mark">N</span>Notiva</a>
+        <p style="margin-top:14px;max-width:280px;">Comunicaciones digitales certificadas para empresas: email, SMS, firma electrónica y verificación de identidad.</p>
+      </div>
+      <div><h4>Servicios</h4><ul>
+        <li><a href="servicios.html#email">Email certificado</a></li>
+        <li><a href="servicios.html#sms">SMS certificado</a></li>
+        <li><a href="servicios.html#firma">Firma electrónica</a></li>
+        <li><a href="servicios.html#ekyc">Verificación eKYC</a></li>
+      </ul></div>
+      <div><h4>Empresa</h4><ul>
+        <li><a href="precios.html">Precios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="assets/dossier-notiva.pdf" download>Descargar dossier (PDF)</a></li>
+      </ul></div>
+      <div><h4>Síguenos</h4><ul>
+        <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.twitter.com" target="_blank" rel="noopener">X / Twitter</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Notiva Digital — proyecto ficticio de práctica GTM/GA4</span>
+      <span>Aviso legal · Privacidad · Cookies (enlaces de ejemplo)</span>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/34600000000" class="wa-float" data-wa-click aria-label="Contactar por WhatsApp" target="_blank" rel="noopener">💬</a>
+
+<script src="js/app.js"></script>
+
+<script>
+function switchTab(key){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===key));
+  document.querySelectorAll('.pricing-panel').forEach(p=>p.classList.toggle('active', p.id === 'panel-'+key));
+  pushTabViewItemList(key);
+}
+
+function pushTabViewItemList(key){
+  var svc = NOTIVA_CATALOG[key];
+  if(!svc) return;
+  var items = svc.packages.map(function(p){ return { item_id:p.id, item_name:p.name, item_category:svc.name, price:p.price, currency:'EUR' }; });
+  pushDL({ ecommerce: null });
+  pushDL({ event:'view_item_list', ecommerce:{ item_list_name: svc.name, items: items } });
+}
+
+function openPackageModal(pkgId){
+  var pkg = findPackage(pkgId);
+  if(!pkg) return;
+  pushDL({ ecommerce:null });
+  pushDL({ event:'view_item', ecommerce:{ currency:'EUR', value:pkg.price, items:[ toItem(pkg,1) ] } });
+
+  document.getElementById('pkg-modal-body').innerHTML =
+    '<span class="pill pill-purple">'+pkg.category+'</span>'+
+    '<h3 style="margin-top:12px;">'+pkg.name+'</h3>'+
+    '<p>Paquete de créditos para '+pkg.category.toLowerCase()+'. Consulta el detalle de uso desde tu panel una vez activada la cuenta.</p>'+
+    '<div class="amount" style="margin:14px 0;">'+pkg.price+'€</div>'+
+    '<button class="btn btn-primary btn-block" onclick="addToCart(\''+pkg.id+'\'); closePackageModal();">Añadir al carrito</button>';
+  document.getElementById('pkg-modal-overlay').style.display = 'flex';
+}
+function closePackageModal(){ document.getElementById('pkg-modal-overlay').style.display = 'none'; }
+
+document.addEventListener('DOMContentLoaded', function(){ pushTabViewItemList('email'); });
+</script>
+
+</body>
+</html>
